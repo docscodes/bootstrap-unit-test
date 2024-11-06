@@ -75,12 +75,16 @@ describe("metadata microservice", () => {
       };
     };
 
-    const videosRouteHandler = mockGetFn.mock.calls[0][1]; // Extract the /videos route handler function.
-    await videosRouteHandler(mockRequest, mockResponse); // Invoke the request handler.
+    // Extract the /videos route handler function.
+    const videosRouteHandler = mockGetFn.mock.calls[0][1]; 
+    // Invoke the request handler.
+    await videosRouteHandler(mockRequest, mockResponse); 
 
-    expect(mockJsonFn.mock.calls.length).toEqual(1); // Expect that the json fn was called.
+    // Expect that the json fn was called.
+    expect(mockJsonFn.mock.calls.length).toEqual(1); 
+    // Expect that the mock records were retrieved via the mock database function.
     expect(mockJsonFn.mock.calls[0][0]).toEqual({
-      videos: [mockRecord1, mockRecord2], // Expect that the mock records were retrieved via the mock database function.
+      videos: [mockRecord1, mockRecord2], 
     });
   });
 });
